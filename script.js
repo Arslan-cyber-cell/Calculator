@@ -93,3 +93,24 @@ function init(){
 }
 
 init();
+
+document.addEventListener('keydown', function (event) {
+    const key = event.key;
+
+    if (!isNaN(key)) {
+        // Si c'est un chiffre
+        buttonClick(key);
+    } else if (key === 'Backspace') {
+        buttonClick('←');
+    } else if (key === 'Enter' || key === '=') {
+        buttonClick('=');
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        // Traduire les opérateurs
+        let symbol = key;
+        if (key === '*') symbol = '×';
+        if (key === '/') symbol = '÷';
+        buttonClick(symbol);
+    } else if (key.toLowerCase() === 'c') {
+        buttonClick('C');
+    }
+});
